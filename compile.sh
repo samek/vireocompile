@@ -10,11 +10,9 @@
 #ln -sf /usr/bin/gcc-6 /usr/bin/gcc
 
 #install libs
-
-cd /tmp
-
-git clone https://github.com/twitter/vireo.git
-git clone https://github.com/l-smash/l-smash.git
-
-cd l-smash && git fetch --all --tags --prune && git checkout tags/v2.9.1 && ./configure --enable-shared && make && make install && ldconfig \
+apt-get -y install libpng-dev libjpeg-dev libfdk-aac-dev libvpx-dev libogg-dev libvorbis-dev libavformat-dev libavcodec-dev libavutil-dev libswscale-dev libx264-dev \
+&& export TERM=xterm && cd /tmp \
+&& git clone https://github.com/twitter/vireo.git \
+&& git clone https://github.com/l-smash/l-smash.git \
+&& cd l-smash && git fetch --all --tags --prune && git checkout tags/v2.9.1 && ./configure --enable-shared && make && make install && ldconfig \
 && cd ../vireo/vireo && export PREFIX=/usr/local/ && ./configure --prefix=$PREFIX --enable-gpl && make && make install
